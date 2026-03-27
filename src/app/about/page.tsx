@@ -110,26 +110,18 @@ export default async function AboutPage() {
         </Section>
         <Section>
           <h2 className='text-2xl font-bold'>Awards</h2>
-            {RESUME_DATA?.awards.map((award)=>(
-              <li key={award} className='text-pretty leading-8 text-muted-foreground print:text-[12px]'>
-                {award}
-              </li>
-            ))}
-        </Section>
-        <Section>
-          <h2 className='text-2xl font-bold'>Bucket List</h2>
-            {RESUME_DATA?.bucketlist.map((bucketlist)=>(
-              <li key={bucketlist} className='text-pretty leading-8 text-muted-foreground print:text-[12px]'>
-                {bucketlist}
-              </li>
-            ))}
+          {RESUME_DATA?.awards.map((award) => (
+            <li key={award} className='text-pretty leading-8 text-muted-foreground print:text-[12px]'>
+              {award}
+            </li>
+          ))}
         </Section>
       </Section>
       <Section>
         <div className='p-10 flex items-center justify-center'>
-            <Link href={RESUME_DATA?.oldLink} className='underline text-gray-400 hover:text-black dark:hover:text-white'>
-              (구)Bobonb.blog
-            </Link>
+          <Link href={RESUME_DATA?.oldLink} className='underline text-gray-400 hover:text-black dark:hover:text-white'>
+            (구)Bobonb.blog
+          </Link>
         </div>
       </Section>
     </main>

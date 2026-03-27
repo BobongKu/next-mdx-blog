@@ -1,7 +1,7 @@
 // src/components/post_list/CategoryButton.tsx
 'use client';
 
-import { TransitionLink } from '../common/TransitionLink';
+import { TransitionLink } from '@/components/common/TransitionLink';
 import '@/config/PixelCard.css'; // PixelCard CSS 임포트
 import { cn } from '@/lib/utils';
 

@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
 
-import { Toaster } from '@/components/ui/toaster';
-import { baseDomain, blogDesc, blogName, blogThumbnailURL } from '@/config/const';
-import '@/config/globals.css';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import { Footer } from '@/components/layouts/Footer';
 import { Header } from '@/components/layouts/Header';
 import { ThemeProvider } from '@/components/layouts/theme/Provider';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import Particles from '@/components/ui/particles';
+import { Toaster } from '@/components/ui/toaster';
+
+import { baseDomain, blogDesc, blogName } from '@/config/const';
+import '@/config/globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseDomain),
@@ -18,14 +20,12 @@ export const metadata: Metadata = {
     title: blogName,
     description: blogDesc,
     siteName: blogName,
-    images: [blogThumbnailURL],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: blogName,
     description: blogDesc,
-    images: [blogThumbnailURL],
   },
 };
 

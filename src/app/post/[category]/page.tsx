@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 import PostListPage from '@/components/post_list/PostListPage';
-import { baseDomain, blogName, blogThumbnailURL } from '@/config/const';
+import { baseDomain, blogName } from '@/config/const';
 import { getCategoryList, getCategoryPublicName } from '@/lib/post';
 
 type Props = {
@@ -30,11 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       url,
-      images: [blogThumbnailURL],
     },
     twitter: {
       title,
-      images: [blogThumbnailURL],
     },
   };
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { ScrollToComment, ScrollTop } from '../common/TocButtons';
+import { ScrollToComment, ScrollTop } from '@/components/common/TocButtons';
 import { HeadingItem } from '@/config/types';
 import { useHeadingsObserver } from '@/hook/useHeadingsObserver';
 import { cn } from '@/lib/utils';

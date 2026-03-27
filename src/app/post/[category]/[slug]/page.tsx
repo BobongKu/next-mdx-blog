@@ -7,7 +7,8 @@ import { PostHeader } from '@/components/post_detail/PostHeader';
 import TocSidebar from '@/components/post_detail/TableOfContentSidebar';
 import TocTop from '@/components/post_detail/TableOfContentTop';
 import { baseDomain } from '@/config/const';
-import { getPostDetail, getPostPaths, parsePostAbstract, parseToc } from '@/lib/post';
+import { getPostDetail, getPostPaths, parsePostAbstract } from '@/lib/post';
+import { parseToc } from '@/lib/toc';
 
 type Props = {
   // [수정] params를 Promise로 감싸줍니다. (Next.js 15+ 방식)
@@ -23,7 +24,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const post = await getPostDetail(category, slug);
 
   const title = `${post.title} | Bobong`;
-  const imageURL = `${baseDomain}${post.thumbnail}`;
 
   return {
     title,
@@ -35,12 +35,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: post.date.toISOString(),
       url: `${baseDomain}${post.url}`,
-      images: [imageURL],
     },
     twitter: {
       title,
       description: post.desc,
-      images: [imageURL],
     },
   };
 }

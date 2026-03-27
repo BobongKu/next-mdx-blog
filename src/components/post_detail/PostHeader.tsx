@@ -1,7 +1,7 @@
 
 import { Post } from '@/config/types';
 import { CalendarDays, Clock3 } from 'lucide-react';
-import { TransitionLink } from '../common/TransitionLink';
+import { TransitionLink } from '@/components/common/TransitionLink';
 
 interface Props {
   post: Post;

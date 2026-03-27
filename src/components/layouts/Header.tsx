@@ -8,7 +8,7 @@ import ThemeSwitch from '@/components/layouts/theme/Switch';
 import { cn } from '@/lib/utils';
 import { Github } from 'lucide-react';
 import { RESUME_DATA } from '@/data/resume-data';
-import { TransitionLink } from '../common/TransitionLink';
+import { TransitionLink } from '@/components/common/TransitionLink';
 
 const navList = [
   { name: 'Bobong', href: '//'},
