@@ -11,9 +11,9 @@ import { RESUME_DATA } from '@/data/resume-data';
 import { TransitionLink } from '@/components/common/TransitionLink';
 
 const navList = [
-  { name: 'Bobong', href: '//'},
-  { name: 'Posts', href: '/post'},
-  { name: 'About', href: '/about' },
+  { name: 'Bobong', href: '/', exact: true },
+  { name: 'Posts', href: '/post', exact: false },
+  { name: 'About', href: '/about', exact: false },
 ];
 
 
@@ -27,22 +27,30 @@ export const Header = () => {
       className='dark:bg-black bg-slate-400 sticky top-0 z-40 bg-opacity-30 dark:bg-opacity-20 backdrop-blur-sm flex w-full flex-col items-center justify-center shadow-sm print:hidden '
     >
       <div className='flex h-[50px] w-full max-w-[1200px] items-center justify-between px-4'>
-        <div className='flex items-center font-medium'>
-          {navList.map((navItem) => (
-            <TransitionLink
-              href={navItem.href}
-              key={navItem.name}
-          >
-              <div className={cn(
-                'rounded-full px-4 text-center text-sm transition-colors hover:text-primary',
-                pathname?.startsWith(navItem.href)
-                  ? 'bg-muted font-medium text-primary'
-                  : 'text-muted-foreground'
-              )}>
-                {navItem.name}
-              </div>
-            </TransitionLink>
-          ))}
+        <div className='flex items-center gap-1'>
+          {navList.map((navItem) => {
+            const isActive = navItem.exact
+              ? pathname === navItem.href
+              : pathname?.startsWith(navItem.href);
+            return (
+              <TransitionLink href={navItem.href} key={navItem.name}>
+                <div
+                  className={cn(
+                    'relative px-3 py-1 text-center text-sm transition-colors hover:text-primary',
+                    navItem.exact && 'font-bold text-base',
+                    isActive
+                      ? 'font-medium text-primary'
+                      : 'text-muted-foreground'
+                  )}
+                >
+                  {navItem.name}
+                  {isActive && !navItem.exact && (
+                    <span className='absolute bottom-0 left-1/2 h-[2px] w-4 -translate-x-1/2 rounded-full bg-primary' />
+                  )}
+                </div>
+              </TransitionLink>
+            );
+          })}
         </div>
 
         <div className='flex gap-3'>

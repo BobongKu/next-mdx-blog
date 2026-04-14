@@ -26,7 +26,7 @@ const PostListPage = async ({ category }: PostListProps) => {
       <section>
         { 
           postList.length == 0 ? <div className='flex items-center justify-center'>not found</div>:           
-          <ul className='grid grid-cols-1 gap-8'> 
+          <ul className='grid grid-cols-1 gap-6 md:grid-cols-2'>
             {postList.map((post) => (
               <PostCard key={post.url + post.date} post={post} />
             ))}

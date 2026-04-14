@@ -3,6 +3,7 @@ export interface PostMatter {
   date: Date;
   dateString: string;
   desc: string;
+  thumbnail?: string;
 }
 
 export interface Post extends PostMatter {
@@ -26,20 +27,5 @@ export interface HeadingItem {
   indent: number;
 }
 
-export interface ProjectMatter {
-  title: string;
-  desc: string;
-  startMonth: string;
-  endMonth: string;
-  tags: string;
-  gitRepoUrl?: string;
-  link?: string;
-}
 
-export interface Project extends ProjectMatter {
-  slug: string;
-  startMonthString: string;
-  endMonthString?: string;
-  content: string;
-}
 

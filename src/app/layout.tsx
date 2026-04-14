@@ -9,18 +9,43 @@ import { ThemeProvider } from '@/components/layouts/theme/Provider';
 import Particles from '@/components/ui/particles';
 import { Toaster } from '@/components/ui/toaster';
 
-import { baseDomain, blogDesc, blogName } from '@/config/const';
+import { baseDomain, blogAuthor, blogDesc, blogKeywords, blogName } from '@/config/const';
 import '@/config/globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseDomain),
-  title: blogName,
+  title: {
+    default: blogName,
+    template: `%s | ${blogName}`,
+  },
   description: blogDesc,
+  keywords: blogKeywords,
+  authors: [{ name: blogAuthor, url: baseDomain }],
+  creator: blogAuthor,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: baseDomain,
+    types: {
+      'application/rss+xml': `${baseDomain}/feed.xml`,
+    },
+  },
   openGraph: {
     title: blogName,
     description: blogDesc,
     siteName: blogName,
     type: 'website',
+    url: baseDomain,
+    locale: 'ko_KR',
   },
   twitter: {
     card: 'summary_large_image',
@@ -35,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className='h-full scroll-my-20 scroll-smooth' suppressHydrationWarning>
+    <html lang='ko' className='h-full scroll-my-20 scroll-smooth' suppressHydrationWarning>
       <body className='font-pretendard flex min-h-screen flex-col'>
         <ThemeProvider>
           <Header />

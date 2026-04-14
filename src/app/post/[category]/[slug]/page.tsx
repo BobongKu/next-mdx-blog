@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 
 import FloatingButton from '@/components/common/FloatingButton';
-import Giscus from '@/components/post_detail/Giscus';
 import { PostBody } from '@/components/post_detail/PostBody';
 import { PostHeader } from '@/components/post_detail/PostHeader';
 import TocSidebar from '@/components/post_detail/TableOfContentSidebar';
 import TocTop from '@/components/post_detail/TableOfContentTop';
-import { baseDomain } from '@/config/const';
+import { BlogPostingJsonLd } from '@/components/seo/JsonLd';
+import { baseDomain, blogAuthor, blogName } from '@/config/const';
 import { getPostDetail, getPostPaths, parsePostAbstract } from '@/lib/post';
 import { parseToc } from '@/lib/toc';
+import Giscus from '@/components/post_detail/Giscus';
 
 type Props = {
   // [수정] params를 Promise로 감싸줍니다. (Next.js 15+ 방식)
@@ -23,22 +24,34 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const { category, slug } = await props.params; // 수정된 부분
   const post = await getPostDetail(category, slug);
 
-  const title = `${post.title} | Bobong`;
+  const title = post.title;
+  const url = `${baseDomain}${post.url}`;
+  const images = post.thumbnail ? [{ url: post.thumbnail, alt: post.title }] : [];
 
   return {
     title,
     description: post.desc,
-
+    authors: [{ name: blogAuthor }],
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
-      title,
+      title: `${post.title} | ${blogName}`,
       description: post.desc,
       type: 'article',
       publishedTime: post.date.toISOString(),
-      url: `${baseDomain}${post.url}`,
+      url,
+      siteName: blogName,
+      locale: 'ko_KR',
+      authors: [blogAuthor],
+      tags: [post.categoryPublicName],
+      images,
     },
     twitter: {
-      title,
+      card: 'summary_large_image',
+      title: `${post.title} | ${blogName}`,
       description: post.desc,
+      images,
     },
   };
 }
@@ -58,6 +71,13 @@ const PostDetail = async (props: Props) => {
   const toc = parseToc(post.content);
   return (
     <div className='prose dark:prose-invert mx-auto w-full max-w-[750px] px-5 :prose-invert sm:px-6'>
+      <BlogPostingJsonLd
+        title={post.title}
+        description={post.desc}
+        datePublished={post.date.toISOString()}
+        url={post.url}
+        thumbnailUrl={post.thumbnail}
+      />
       <PostHeader post={post} />
       <TocTop toc={toc} />
       <article className='relative'>

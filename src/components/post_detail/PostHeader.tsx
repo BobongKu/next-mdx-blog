@@ -12,13 +12,9 @@ export const PostHeader = ({ post }: Props) => {
     <header className='mt-14 text-center'>
       <h1 className='mb-3 text-3xl'>{post.title}</h1>
       <div className='mb-3'>
-        <TransitionLink
-          href={`/post/${post.categoryPath}`}
-        >
-          <span className="group text-black dark:text-white transition-all duration-300 ease-in-out">
-            <span className="bg-left-bottom bg-gradient-to-r from-black to-white dark:from-white dark:to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-              {post.categoryPublicName}
-            </span>
+        <TransitionLink href={`/post/${post.categoryPath}`}>
+          <span className='inline-block rounded-full border border-border px-3 py-0.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary'>
+            {post.categoryPublicName}
           </span>
         </TransitionLink>
       </div>

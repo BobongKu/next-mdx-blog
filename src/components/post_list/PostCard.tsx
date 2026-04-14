@@ -1,19 +1,15 @@
 'use client'; // PostListClient의 자식이므로 클라이언트 컴포넌트입니다.
 
 import { Post } from '@/config/types';
-import { CATEGORY_COLORS } from '@/config/const';
+import { getCategoryColors } from '@/config/const';
 import { CalendarDays, Clock3 } from 'lucide-react';
 import { TransitionLink } from '@/components/common/TransitionLink';
 
-import '@/config/PixelCard.css'; // CSS 파일을 import합니다.
+import '@/config/PixelCard.css';
 
 interface Props {
   post: Post;
 }
-
-const getCategoryColors = (category: string) => {
-  return CATEGORY_COLORS[category.toLowerCase()] || CATEGORY_COLORS['default'];
-};
 
 const PostCard = ({ post }: Props) => {
   const colors = getCategoryColors(post.categoryPublicName);
@@ -30,12 +26,17 @@ const PostCard = ({ post }: Props) => {
         ></pixel-canvas>
         <div className='card-content'>
           <div>
-            <div className='card-category text-sm font-medium pt-2'>
+            <div className='card-category text-xs font-medium pt-2'>
               {post.categoryPublicName}
             </div>
             <h2 className='card-title mt-1 text-lg font-bold sm:text-xl md:text-lg'>
               {post.title}
             </h2>
+            {post.desc && (
+              <p className='mt-1 line-clamp-1 text-sm text-muted-foreground'>
+                {post.desc}
+              </p>
+            )}
           </div>
           <div className='card-footer'>
             <div className='icon-text'>
