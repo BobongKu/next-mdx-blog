@@ -30,6 +30,7 @@
     "dayjs": "^1.11.10",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.319.0",
+    "mermaid": "^11.14.0",
     "next": "^16.0.1",
     "next-mdx-remote": "^6.0.0",
     "next-themes": "^0.2.1",
@@ -43,7 +44,8 @@
     "shiki": "^4.0.2",
     "shikiji": "^0.9.19",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",

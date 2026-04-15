@@ -5,10 +5,13 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
+import { remarkMermaid } from './remark-mermaid';
 
 export const mdxOptions: MDXRemoteProps['options'] = {
   mdxOptions: {
     remarkPlugins: [
+      // ```mermaid → <Mermaid /> 변환 (rehype-pretty-code 전에 실행)
+      remarkMermaid,
       // 깃허브 Flavored 마크다운 지원 추가
       remarkGfm,
       // 이모티콘 접근성 향상
