@@ -13,6 +13,7 @@ import { TransitionLink } from '@/components/common/TransitionLink';
 const navList = [
   { name: 'Bobong', href: '/', exact: true },
   { name: 'Posts', href: '/post', exact: false },
+  { name: 'Tools', href: '/tools', exact: false },
   { name: 'About', href: '/about', exact: false },
 ];
 
