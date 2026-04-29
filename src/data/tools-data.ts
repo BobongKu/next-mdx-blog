@@ -24,14 +24,15 @@ export const TOOLS_DATA: Tool[] = [
     ],
     highlights: [
       'Docker headless Ghidra + FastAPI HTTP 브리지',
+      '데스크톱 GUI — Dashboard / Programs / Search / Console / Settings',
       '로드된 모든 프로그램에 걸친 크로스 바이너리 xref / deps_trace / callgraph_path',
       '40+개 분석 도구를 /schema 기반으로 MCP에 동적 등록',
       'path-return 패턴으로 대형 응답(수백 KB)도 1KB 미만 요약 반환',
       'QMD 결합 시 저장된 JSON을 의미 검색 대상으로 재활용',
     ],
     relatedPost: {
-      title: 'ghidra-agent-mcp — LLM으로 하는 크로스 바이너리 의존성 탐색',
-      href: '/post/development/ghidra_mcp_path_return',
+      title: 'ghidra-agent-mcp MCP와 동시에 데스크톱 GUI로 보는 크로스 바이너리 의존성',
+      href: '/post/development/ghidra_agent_mcp_gui',
     },
   },
   {
